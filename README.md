@@ -1,9 +1,11 @@
 # fast_sorted_mask
 matlab code for fast masking of ordered vectors based on binary search
+Selecting a subset of a vector that is between some limits (herein *masking*) is a widely used analytical tool. The common approach of comaring each element to the upper and lower limit  (herin *Brute compare*) has complexity O\~ n . The novel contribution of this code is a demonstration of a relatively simple approach that uses binary compare on an ordered vector to acceive superior performance in two cases. 
+1. Data that is already sorted (O\~log(n) cf. brute O\~n).
+2. When there is a requirement to repeatedly (m) mask the same data such that the the inial cost of the sort is offset by the increased speed of the operation. (O\~n·log(n)+m·log(n) )
 
-Brute compare is O~ nm
-sort then search based approach is O~ n lon(n) mlog(n)
-Means you can win in two cases, already sorted data (O~mlog(n) cf. brute O~nm) or when you are repeatedly masking the same data enough to offest the inial cost of the sort.
+The code here demosntrates the algorithm in native matlab and provides a number of tests in order to compare the performance.
+
 | ![A comparison of various masking approaches](fig1.png "Fig1") | 
 |:--:| 
  **Figure1**- Execution time for various methods.  |
