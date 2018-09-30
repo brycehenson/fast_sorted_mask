@@ -6,6 +6,7 @@ Selecting a subset of a vector that is between some limits (herein *masking*) is
 2. When there is a requirement to repeatedly (m) mask the same data such that the the inial cost of the sort is offset by the increased speed of the sort operation. (O\~n·log(n)+m·log(n) )
 
 The code here demonstrates the algorithm in native matlab and provides a number of tests in order to compare the performance.
+For taking small slices of large (>1e6 elments) sorted vectors a speedup of 100x is demonstrated.
 
 | ![A comparison of various masking approaches](fig1.png "Fig1") | 
 |:--:| 
@@ -19,7 +20,7 @@ The code here demonstrates the algorithm in native matlab and provides a number 
 
 
 **Future work**
-
+-figure out what the bump in the relative time is at 10^7.05 
 - Compile to C
 - Fast 1d histogram based on this approach
   - Adaptive between sort-search and brute based on the number of input counts
