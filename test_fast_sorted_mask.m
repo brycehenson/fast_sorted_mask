@@ -34,7 +34,7 @@ fprintf('are the results equal? %s \n',LogicalStr{isequal(subdata1,subdata2)+1})
 %%
 fprintf('comparing the scaling of the methods \n')
 
-points_list=round(logspace(2,8.5,100));
+points_list=round(logspace(2,7.5,400));
 iimax=numel(points_list);
 time_unsorted_brute=nan(1,iimax);
 time_presorted_brute=nan(1,iimax); %these should be the same
@@ -95,7 +95,7 @@ if ptime-last_update>2 || ii==iimax
     loglog(points_list,time_sort+time_presorted_search,'color',plot_colors(3,:))
     loglog(points_list,time_presorted_search,'color',plot_colors(4,:))
     loglog(points_list,(time_sort+time_presorted_search*m_val)/m_val,'color',plot_colors(5,:))
-    legend('unsorted brute','presorted brute','sort then fast\_sorted\_mask','presorted fast\_sorted\_mask',...
+    legend('unsorted brute mask','presorted brute mask','sort then fast\_sorted\_mask','presorted fast\_sorted\_mask',...
         [sprintf('sort then 10^{%.1f}*',log10(m_val)),'fast\_sorted\_mask (scaled)'],'Location','northwest')
     hold off
     xlabel('Vector Size(n)');
@@ -113,7 +113,7 @@ fprintf('\n')
 %note this will depend on the min/max that is chosen
 %from above we can see that the sort then search method
 % O ~ nlog(n) +2 log(n)
-%vs the brute compare
+%vs the brute mask
 % O ~ 2n
 %can never compensate for the sort time, however if we are sorting once and then doing m operations
 %we can win back a speedup for large enough m
@@ -128,7 +128,7 @@ clf
 set(gcf,'color','w')
 subplot(2,2,1)
 loglog(points_list,time_presorted_search./time_presorted_brute,'color','k')
-title('Rel. Time(Exc. Sort) fast\_sorted\_mask/brute compare')
+title('Rel. Time(Exc. Sort) fast\_sorted\_mask/brute mask')
 ylabel('Relative Execution Time')
 xlabel('Vector Size(n)');
 
@@ -146,11 +146,10 @@ if numel(rel_times)
 end
 
 lgd=legend(arrayfun(@(x) sprintf('m=10^{%.1f}',x),log10(m_list),'UniformOutput',0),...
-    'Location','East');
-lgd.Position=lgd.Position+[+0.08,0,0,0];
+    'Location','West');
 xlabel('Vector Size (n)');
 ylabel('Relative Execution Time')
-title('Rel. Time sort+m*fast\_sorted\_mask/ m*brute compare')
+title('Rel. Time sort+m*fast\_sorted\_mask/ m*brute mask')
 yl=ylim;
 ylim([yl(1),2])
 hold off
@@ -160,16 +159,17 @@ hold off
 subplot(2,2,3)
 m_crossover=time_sort./(time_unsorted_brute-time_presorted_search);
 semilogx(points_list,m_crossover,'color','k')
-yl=ylim;
-ylim([0,yl(2)]);
+%yl=ylim;
+ylim([0,20]);
+
 xlabel('Vector Size (n)');
 ylabel('Repeated Uses (m)')
-title('Repeated uses (m) for sort+fast\_sorted\_mask to win over brute compare');
+title('Repeated uses (m) for sort+fast\_sorted\_mask to win over brute mask');
 
 subplot(2,2,4)
 set(gcf,'color','w')
 m_list=logspace(0,6,100);
-n_desired=10^(4.0);
+n_desired=10^(6.0);
 [~,idx]=min(abs(points_list-n_desired));
 n_actual=points_list(idx);
 rel_times=(time_sort(idx) + m_list.*time_presorted_search(idx))./ (m_list.*time_unsorted_brute(idx));
