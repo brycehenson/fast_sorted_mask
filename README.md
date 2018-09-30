@@ -20,7 +20,7 @@ For taking small slices of large (>1e6 elments) sorted vectors a speedup of 100x
 
 
 **Future work**
-- figure out what the bump in the relative time is at 10^7.05 
+- figure out what the bump in the relative time is at n=10^7.05 
 - Compile to C
 - Fast 1d histogram based on this approach
   - Adaptive between sort-search and brute based on the number of input counts
