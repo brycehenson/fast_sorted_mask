@@ -18,17 +18,17 @@ function idxs=fast_sorted_mask(data,min_val,max_val)
 %       subdata2=data(mask_idx(1):mask_idx(2)); toc
 %       isequal(subdata1,subdata2)
 
-% Other m-files required: 
+% Other m-files required: none
 % Also See:test_fast_sorted_mask
 % Subfunctions: binary_search_first_elm
 % MAT-files required: none
 %
 % Known BUGS/ Possible Improvements
-% -fix whatever is causeing execution time to flatten out in log-log past ~7e6.  see test_fast_sorted_mask
-% -should compile it for more speed!
+% 	-fix whatever is causeing execution time to flatten out in log-log past ~7e6.  see test_fast_sorted_mask
+% 	-should compile it for more speed!
 
 % Author: Bryce Henson
-% email: Bryce.Henson@live.com  %YOU MUST INCLUDE '[matlab][fast_sorted_mask]' in the subject line OR I WILL NOT REPLY
+% email: Bryce.Henson[a circle]live.com  %YOU MUST INCLUDE '[matlab][fast_sorted_mask]' in the subject line OR I WILL NOT REPLY
 % Last revision:2018-09-30
 
 %------------- BEGIN CODE --------------

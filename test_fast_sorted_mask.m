@@ -47,7 +47,7 @@ tic
 sfigure(1);
 clf
 set(gcf,'color','w')
-plot_colors=parula(5);
+plot_colors=parula(5+1); %padd the colors to avoid yellow
 
 min_val=0.89;
 max_val=0.9;
@@ -137,7 +137,7 @@ subplot(2,2,2)
 set(gcf,'color','w')
 m_list=10.^(1:.5:4);
 rel_times=arrayfun(@(m) (time_sort + m.*time_presorted_search)./ (m.*time_unsorted_brute),m_list,'UniformOutput',0);
-plot_colors=parula(numel(m_list));
+plot_colors=parula(numel(m_list)+1);
 if numel(rel_times)
     for ii=1:numel(rel_times)
         loglog(points_list,rel_times{ii},'color',plot_colors(ii,:))
