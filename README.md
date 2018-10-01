@@ -21,7 +21,7 @@ For taking small slices of large (>1e6 elments) sorted vectors a speedup of 100x
 ## Contributions
 -Benjamin Bernard: Binary search modified from fileexchange project [binary-search-for-closest-value-in-an-array](https://au.mathworks.com/matlabcentral/fileexchange/37915-binary-search-for-closest-value-in-an-array)
 
-##Future work
+## Future work
 - figure out what the bump in the relative time is at n=10^7.05 
 - Compile to C
 - Fast 1d histogram based on this approach
