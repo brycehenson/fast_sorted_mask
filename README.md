@@ -3,7 +3,7 @@ matlab code for fast masking of ordered vectors based on binary search.
 
 Selecting a subset of a vector that is between some limits (herein *masking*) is a widely used analytical tool in particle physics and the analysis routines of the He* BEC group ([@spicydonkey](https://github.com/spicydonkey/hebec_essentials),[@GroundhogState](https://github.com/GroundhogState)). The common approach of comparing each element to the upper and lower limit  (herein *Brute compare*) has complexity O\~ n . The novel contribution of this code is a demonstration of a relatively simple approach that uses binary compare (O\~log(n)) on an ordered vector to achieve superior performance in two cases. 
 1. Data that is already sorted (O\~log(n) cf. brute O\~n).
-2. When there is a requirement to repeatedly (m) mask the same data such that the the inial cost of the sort is offset by the increased speed of the sort operation. (O\~n·log(n)+m·log(n) )
+2. When there is a requirement to repeatedly (m) mask the same data such that the the inial cost of the sort is offset by the increased speed of the sort operation. (O\~n·log(n)+m·log(n) cf, O\~n·m)
 
 The code here demonstrates the algorithm in native matlab and provides a number of tests in order to compare the performance.
 For taking small slices of large (>1e6 elments) sorted vectors a speedup of 100x is demonstrated.
