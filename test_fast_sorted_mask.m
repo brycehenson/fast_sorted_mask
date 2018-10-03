@@ -37,7 +37,7 @@ fprintf('are the results equal? %s \n',LogicalStr{isequal(subdata1,subdata2)+1})
 
 fprintf('comparing the scaling of the methods \n')
 
-points_list=round(logspace(2,8.5,400)); %values of n to investigate
+points_list=round(logspace(3.5,8.5,400)); %values of n to investigate
 %set up the output arrays
 iimax=numel(points_list);
 time_sort=nan(1,iimax);
@@ -51,6 +51,7 @@ tic
 sfigure(1);
 clf
 set(gcf,'color','w')
+set(gcf, 'Units', 'pixels', 'Position', [100, 100, 1600, 900])
 plot_colors=parula(5+1); %padd the colors to avoid yellow
 
 min_val=0.89;
@@ -78,7 +79,6 @@ tic;
 sorted_data=sort(unsorted_data);
 time_sort(ii)=toc;
 
-
 tic;
 mask_idx=fast_sorted_mask(sorted_data,min_val,max_val);
 time_presorted_search(ii,1)=toc;
@@ -88,7 +88,6 @@ subdata2=sorted_data(mask_idx(1):mask_idx(2));
 time_presorted_search(ii,3)=toc;
 time_presorted_search(ii,2:3)=time_presorted_search(ii,2:3)-time_presorted_search(ii,1);
 
-
 tic; 
 mask=sorted_data<max_val & sorted_data>min_val;
 time_presorted_brute(ii,1)=toc;
@@ -97,8 +96,6 @@ time_presorted_brute(ii,2)=toc;
 subdata3=sorted_data(mask);
 time_presorted_brute(ii,3)=toc;
 time_presorted_brute(ii,2:3)=time_presorted_brute(ii,2:3)-time_presorted_brute(ii,1);
-
-
 
 
 if ~isequal(subdata1,subdata2,subdata3) || ~isequal(count_unsorted_brute,count_presorted_search,count_presorted_brute)
@@ -160,6 +157,8 @@ end
 figure(1)
 fprintf('\n') 
 
+saveas(gcf,'fig1.png')
+
 %% how many repeats?
 %note this will depend on the min/max that is chosen
 %from above we can see that the sort then search method
@@ -175,13 +174,14 @@ fprintf('\n')
 %time_sort =m*time_unsorted_brute-m*time_presorted_search
 %time_sort/(time_unsorted_brute-time_presorted_search) =m
 
-counts_or_values=0;
+counts_or_values=1;
 c_or_v_idx=2+counts_or_values;
 n_desired=10^(6.5);
 
-figure(2)
+sfigure(2);
 clf
 set(gcf,'color','w')
+set(gcf, 'Units', 'pixels', 'Position', [100, 100, 1600, 900])
 subplot(2,2,1)
 loglog(points_list,...
     (time_presorted_search(:,1)+time_presorted_search(:,c_or_v_idx))./...
@@ -244,3 +244,4 @@ ylabel('Relative Execution Time');
 title(sprintf('Rel. Time Inc. Sort for n=10^{%.1f}',log10(n_actual)))
 hold off
 
+saveas(gcf,sprintf('fig%u.png',counts_or_values+2))

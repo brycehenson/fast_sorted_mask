@@ -99,8 +99,6 @@ end
 idx=btm;
 end
 
-
-
 % Copyright (c) 2012, Benjamin Bernard
 % All rights reserved.
 % 
