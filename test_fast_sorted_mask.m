@@ -174,9 +174,9 @@ saveas(gcf,'fig1.png')
 %time_sort =m*time_unsorted_brute-m*time_presorted_search
 %time_sort/(time_unsorted_brute-time_presorted_search) =m
 
-counts_or_values=1;
+counts_or_values=0;
 c_or_v_idx=2+counts_or_values;
-n_desired=10^(6.5);
+n_desired=10^(7);
 
 sfigure(2);
 clf
