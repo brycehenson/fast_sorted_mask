@@ -38,7 +38,7 @@ The brute compare implementation is very easy by using a logical mask vector:
 mask=data>lower_lim & data<upper_lim 
 ```
 Logical indexing is very powerful tool read more [here](https://blogs.mathworks.com/loren/2013/02/20/logical-indexing-multiple-conditions/)
-(note: does matlab use logical short-circuting for & of two logical vectors? if so can gains (approx 2 for small slice in center of data) be had here? Dose the branching in code slow things down?)
+(note: does matlab use logical short-circuting for & of two logical vectors? if so can gains(factor~2) be had here? Does the branching in code slow things down?)
 then the counts (integer) may be extracted as
 ```
 num_mask=sum(mask)
