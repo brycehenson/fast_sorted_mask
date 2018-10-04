@@ -9,9 +9,9 @@ The novel contribution of this code is a demonstration of a relatively simple ap
 
 There are two things that the user may want from this masking operation:
 1. Returning the number of data points(or counts) in this mask (herein *retun mask count*).
-   * This is where the search based algorithm really shines compared to the brute mask which must count up the logical vector (see detials).
+   * This is where the search based algorithm really shines compared to the brute mask (as it just subtracts the uper and lower index while the brute compare must count up the logical vector, see detials).
 2. Return the values of the data that maskes it through this mask. (herein *retun mask values*)
-   * This has a smaller speedup because copying a subset of a vector (even a contiguous block) is a substantialy slower that the search.
+   * This has a smaller speedup because copying a subset of a vector (even a contiguous block) is a substantialy slower than the search.
 
 
 The code here demonstrates the algorithm for both types (counting and subset) in native matlab and provides a number of tests in order to compare the performance.
@@ -34,10 +34,13 @@ For taking small slices of large (>1e6 elments) sorted vectors a speedup of 1000
 
 ## Details
 The brute compare implementation is very easy by using a logical mask vector:
-mask=vector>lower_lim & vector<upper_lim 
+mask=data>lower_lim & data<upper_lim 
 Logical indexing is very powerful tool read more [here](https://blogs.mathworks.com/loren/2013/02/20/logical-indexing-multiple-conditions/)
 (note: does matlab use logical short-circuting for & of two logical vectors? if so can gains (approx 2 for small slice in center of data) be had here?)
-
+then the counts may be extracted as
+num_mask=sum(mask)
+or the subset of data points
+subset_mask=data(mask)
 
 
 ## Contributions
