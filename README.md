@@ -34,13 +34,19 @@ For taking small slices of large (>1e6 elments) sorted vectors a speedup of 1000
 
 ## Details
 The brute compare implementation is very easy by using a logical mask vector:
+```
 mask=data>lower_lim & data<upper_lim 
+```
 Logical indexing is very powerful tool read more [here](https://blogs.mathworks.com/loren/2013/02/20/logical-indexing-multiple-conditions/)
-(note: does matlab use logical short-circuting for & of two logical vectors? if so can gains (approx 2 for small slice in center of data) be had here?)
-then the counts may be extracted as
+(note: does matlab use logical short-circuting for & of two logical vectors? if so can gains (approx 2 for small slice in center of data) be had here? Dose the branching in code slow things down?)
+then the counts (integer) may be extracted as
+```
 num_mask=sum(mask)
-or the subset of data points
+```
+or the subset of data points (vector)
+```
 subset_mask=data(mask)
+```
 
 
 ## Contributions
