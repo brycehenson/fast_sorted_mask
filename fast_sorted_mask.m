@@ -81,6 +81,7 @@ function idx_closest = binary_search_first_elm(vec, val,lower_idx,upper_idx)
 % ===============
 % arr : increasingly ordered array
 % val : scalar in R
+% use for debug in loop %fprintf('%i, %i, %i\n',btm,top,mid)
 
 top = upper_idx(1);
 btm = lower_idx(1);
@@ -88,7 +89,7 @@ btm = lower_idx(1);
 % Binary search for index
 while top > btm + 1
     mid = floor((top + btm)/2);
-    fprintf('%i, %i, %i\n',btm,top,mid)
+    
     % Replace >= here with > to obtain the last index instead of the first.
     if vec(mid) >= val 
         top = mid;

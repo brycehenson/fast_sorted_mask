@@ -33,14 +33,40 @@ fprintf('are the results equal? %s \n',LogicalStr{isequal(subdata1,subdata2)+1})
 
 
 %% see how it deals with values on the edge
+data=(0:0.025:1);
 min_val=0.4;
 max_val=0.5;
-data=(0:0.025:1);
 mask=data<max_val & data>min_val;
 subdata1=data(mask);
 mask_idx=fast_sorted_mask(data,min_val,max_val);
 subdata2=sort(data(mask_idx(1):mask_idx(2)));
+fprintf('Edge check 1 ok? %s \n',LogicalStr{isequal(subdata1,subdata2)+1})
 
+min_val=0;
+max_val=0.5;
+mask=data<max_val & data>min_val;
+subdata1=data(mask);
+mask_idx=fast_sorted_mask(data,min_val,max_val);
+subdata2=sort(data(mask_idx(1):mask_idx(2)));
+fprintf('Edge check 2 ok? %s \n',LogicalStr{isequal(subdata1,subdata2)+1})
+
+
+min_val=0;
+max_val=1;
+mask=data<max_val & data>min_val;
+subdata1=data(mask);
+mask_idx=fast_sorted_mask(data,min_val,max_val);
+subdata2=sort(data(mask_idx(1):mask_idx(2)));
+fprintf('Edge check 2 ok? %s \n',LogicalStr{isequal(subdata1,subdata2)+1})
+
+
+min_val=0;
+max_val=1-eps;
+mask=data<max_val & data>min_val;
+subdata1=data(mask);
+mask_idx=fast_sorted_mask(data,min_val,max_val);
+subdata2=sort(data(mask_idx(1):mask_idx(2)));
+fprintf('Edge check 2 ok? %s \n',LogicalStr{isequal(subdata1,subdata2)+1})
 
 %%
 %Should find the time for counting and returning as seprate plots
