@@ -43,7 +43,7 @@ if data(1)>min_val
     end
 else
     min_idx=binary_search_first_elm(data,min_val,1,elms);
-    if data(min_idx)<min_val
+    if data(min_idx)<=min_val
         min_idx=min_idx+1;
     end
 end
@@ -55,7 +55,7 @@ if data(end)<max_val
     end
 else
     max_idx=binary_search_first_elm(data,max_val,min_idx,elms);
-    if data(max_idx)>max_val
+    if data(max_idx)>=max_val
         max_idx=max_idx-1;
     end
 end
@@ -70,7 +70,7 @@ end
 
 %modified from mathworks submission by Benjamin Bernard 
 %from https://au.mathworks.com/matlabcentral/fileexchange/37915-binary-search-for-closest-value-in-an-array
-function idx = binary_search_first_elm(vec, val,min_idx,start_idx)
+function idx_closest = binary_search_first_elm(vec, val,lower_idx,upper_idx)
 % Returns index of vec that is closest to val, searching between min_idx start_idx . 
 %If several entries
 % are equally close, return the first. Works fine up to machine error (e.g.
@@ -82,21 +82,22 @@ function idx = binary_search_first_elm(vec, val,min_idx,start_idx)
 % arr : increasingly ordered array
 % val : scalar in R
 
-top = start_idx(1);
-btm = min_idx(1);
+top = upper_idx(1);
+btm = lower_idx(1);
 
 % Binary search for index
-while top - btm > 1
-    med = floor((top + btm)/2);
+while top > btm + 1
+    mid = floor((top + btm)/2);
+    fprintf('%i, %i, %i\n',btm,top,mid)
     % Replace >= here with > to obtain the last index instead of the first.
-    if vec(med) >= val 
-        top = med;
+    if vec(mid) >= val 
+        top = mid;
     else
-        btm = med;
+        btm = mid;
     end
 end
 
-idx=btm;
+idx_closest=mid;
 end
 
 % Copyright (c) 2012, Benjamin Bernard
