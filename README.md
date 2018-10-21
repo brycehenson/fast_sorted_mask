@@ -65,4 +65,5 @@ subset_mask=data(mask_idx(1):mask_idx(2));
 - Fast 1d histogram based on this approach
   - Adaptive between sort-search and brute based on the number of input counts
 - Fast n histogram to replace [histcn](https://au.mathworks.com/matlabcentral/fileexchange/23897-n-dimensional-histogram?focused=5198474&tab=function) & [ndhistc](https://au.mathworks.com/matlabcentral/fileexchange/3957-ndhistc)
+- add to fileexchange
   
