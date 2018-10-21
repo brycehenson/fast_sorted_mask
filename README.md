@@ -6,7 +6,8 @@ Selecting a subset of a vector that is between some limits (herein *masking*,som
 
 The common approach to creating a histogram involves comparing each element to the upper and lower limit (herein *Brute compare*) has complexity O(n). The novel contribution of this code is a demonstration of a relatively simple approach that uses a binary search algorithm ( O(log(n)) ) on an ordered vector to achieve superior performance in two use cases. 
 1. Data that is already sorted ( O(log(n)) cf. brute O(n) ).
-2. When there is a requirement to repeatedly (m) mask the same data such that the the inial cost of the sort is offset by the increased speed of the mask operation. (O(n·log(n)+m·log(n)) cf, O(n·m) )
+2. When there is a requirement to repeatedly (m) mask the same data such that the the inial cost of the sort is offset by the increased speed of the mask operation. (O(n·log(n)+m·log(n)) cf, O(n·m) )  
+Note that if m is small and you check that the data is ordered (eg issorted(data)) you have probably lost most of any potential speedup already.
 
 There are two things that the user may want from this masking operation:
 1. Returning the number of data points(or counts) in this mask (herein *retun mask count*).
@@ -53,7 +54,7 @@ mask_idx=fast_sorted_mask(data,lower_lim,upper_lim);
 num_mask=mask_idx(2)-mask_idx(1)+1;
 subset_mask=data(mask_idx(1):mask_idx(2)); 
 ```
-***WARNING: the data vector MUST be sorted. See figures above for when it is still advantagous to use this approach for unordered data. ***
+**WARNING: the data vector MUST be sorted. See figures above for when it is still advantagous to sort unordered data and then use this approach.**
 
 ## Contributions
 - **Benjamin Bernard** Binary search modified from fileexchange project [binary-search-for-closest-value-in-an-array](https://au.mathworks.com/matlabcentral/fileexchange/37915-binary-search-for-closest-value-in-an-array)
