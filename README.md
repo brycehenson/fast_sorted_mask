@@ -2,11 +2,11 @@
 **Bryce M. Henson**  
 Matlab code for fast masking/selection of ordered vectors based on binary search.
 
-Selecting a subset of a vector that is between some limits (herein *masking*,sometimes known as 'gating') is a widely used analytical tool in particle physics and is commonly used in the analysis routines of the He* BEC group ([@spicydonkey](https://github.com/spicydonkey/hebec_essentials),[@GroundhogState](https://github.com/GroundhogState)). The common approach of comparing each element to the upper and lower limit  (herein *Brute compare*) has complexity O(n) .
+Selecting a subset of a vector that is between some limits (herein *masking*,sometimes known as 'gating') is a widely used analytical tool (eg. particle physics) commonly employed in the analysis routines of the He* BEC group ([@spicydonkey](https://github.com/spicydonkey/hebec_essentials),[@GroundhogState](https://github.com/GroundhogState)). 
 
-The novel contribution of this code is a demonstration of a relatively simple approach that uses a binary search algorithm ( O(log(n)) ) on an ordered vector to achieve superior performance in two use cases. 
+The common approach to creating a histogram involves comparing each element to the upper and lower limit (herein *Brute compare*) has complexity O(n). The novel contribution of this code is a demonstration of a relatively simple approach that uses a binary search algorithm ( O(log(n)) ) on an ordered vector to achieve superior performance in two use cases. 
 1. Data that is already sorted ( O(log(n)) cf. brute O(n) ).
-2. When there is a requirement to repeatedly (m) mask the same data such that the the inial cost of the sort is offset by the increased speed of the sort operation. (O(n·log(n)+m·log(n)) cf, O(n·m) )
+2. When there is a requirement to repeatedly (m) mask the same data such that the the inial cost of the sort is offset by the increased speed of the mask operation. (O(n·log(n)+m·log(n)) cf, O(n·m) )
 
 There are two things that the user may want from this masking operation:
 1. Returning the number of data points(or counts) in this mask (herein *retun mask count*).
@@ -47,16 +47,16 @@ or the subset of data points (vector)
 ```
 subset_mask=data(mask)
 ```
-The equivelent process that utilizes this code is
+The equivelent (but faster) operation using fast_sorted_mask on ordered data is:
 ```
 mask_idx=fast_sorted_mask(data,lower_lim,upper_lim);
 num_mask=mask_idx(2)-mask_idx(1)+1;
 subset_mask=data(mask_idx(1):mask_idx(2)); 
 ```
-***the data vector MUST be sorted***
+***WARNING: the data vector MUST be sorted. See figures above for when it is still advantagous to use this approach for unordered data. ***
 
 ## Contributions
--** Benjamin Bernard** Binary search modified from fileexchange project [binary-search-for-closest-value-in-an-array](https://au.mathworks.com/matlabcentral/fileexchange/37915-binary-search-for-closest-value-in-an-array)
+- **Benjamin Bernard** Binary search modified from fileexchange project [binary-search-for-closest-value-in-an-array](https://au.mathworks.com/matlabcentral/fileexchange/37915-binary-search-for-closest-value-in-an-array)
 
 ## Future work
 - check what the function does to counts that equal the bin edge
