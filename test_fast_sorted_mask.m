@@ -13,10 +13,10 @@ tic;mask_idx=fast_sorted_mask(data,min_val,max_val);
 time_search=toc;
 subdata2=data(mask_idx(1):mask_idx(2)); 
 fprintf('time for fast_sorted_mask = %.2fms\n',time_search*1e3)
-LogicalStr = {'FAIL', 'pass'};
-fprintf('Results equal test : %s \n',LogicalStr{isequal(subdata1,subdata2)+1})
-fprintf('Speedup test       : %s \n',LogicalStr{(time_search<time_brute*0.2)+1})
-fprintf('Speedup by 5x test : %s \n',LogicalStr{(time_search<time_brute*0.2)+1})
+logic_str = {'FAIL', 'pass'};
+fprintf('Results equal test : %s \n',logic_str{isequal(subdata1,subdata2)+1})
+fprintf('Speedup test       : %s \n',logic_str{(time_search<time_brute)+1})
+fprintf('Speedup by 5x test : %s \n',logic_str{(time_search<time_brute*0.2)+1})
 
 
 
@@ -28,8 +28,8 @@ max_val=0.92;
 subdata1=sort(data(mask));
 mask_idx=fast_sorted_mask(data,min_val,max_val);
 subdata2=sort(data(mask_idx(1):mask_idx(2)));
-LogicalStr = {'FAIL', 'pass'};
-fprintf('unsorted data check ok? (fail is normal): %s \n',LogicalStr{isequal(subdata1,subdata2)+1})
+logic_str = {'FAIL', 'pass'};
+fprintf('unsorted data check ok? (fail is normal): %s \n',logic_str{isequal(subdata1,subdata2)+1})
 
 
 
@@ -41,7 +41,7 @@ mask=data<max_val & data>min_val;
 subdata1=data(mask);
 mask_idx=fast_sorted_mask(data,min_val,max_val);
 subdata2=sort(data(mask_idx(1):mask_idx(2)));
-fprintf('Edge test 1: %s \n',LogicalStr{isequal(subdata1,subdata2)+1})
+fprintf('Edge test 1: %s \n',logic_str{isequal(subdata1,subdata2)+1})
 
 min_val=0;
 max_val=0.5;
@@ -49,7 +49,7 @@ mask=data<max_val & data>min_val;
 subdata1=data(mask);
 mask_idx=fast_sorted_mask(data,min_val,max_val);
 subdata2=sort(data(mask_idx(1):mask_idx(2)));
-fprintf('Edge test 2: %s \n',LogicalStr{isequal(subdata1,subdata2)+1})
+fprintf('Edge test 2: %s \n',logic_str{isequal(subdata1,subdata2)+1})
 
 
 min_val=0;
@@ -58,7 +58,7 @@ mask=data<max_val & data>min_val;
 subdata1=data(mask);
 mask_idx=fast_sorted_mask(data,min_val,max_val);
 subdata2=sort(data(mask_idx(1):mask_idx(2)));
-fprintf('Edge test 3: %s \n',LogicalStr{isequal(subdata1,subdata2)+1})
+fprintf('Edge test 3: %s \n',logic_str{isequal(subdata1,subdata2)+1})
 
 
 min_val=0;
@@ -67,7 +67,7 @@ mask=data<max_val & data>min_val;
 subdata1=data(mask);
 mask_idx=fast_sorted_mask(data,min_val,max_val);
 subdata2=sort(data(mask_idx(1):mask_idx(2)));
-fprintf('Edge test 4: %s \n',LogicalStr{isequal(subdata1,subdata2)+1})
+fprintf('Edge test 4: %s \n',logic_str{isequal(subdata1,subdata2)+1})
 
 %%
 %Should find the time for counting and returning as seprate plots
