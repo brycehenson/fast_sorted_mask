@@ -38,7 +38,8 @@ The brute compare implementation is very easy by using a logical mask vector:
 ```
 mask=data>lower_lim & data<upper_lim 
 ```
-Logical indexing is very powerful tool  ([read more here](https://blogs.mathworks.com/loren/2013/02/20/logical-indexing-multiple-conditions/)) then the number of counts (integer) may be extracted as
+(If you are not familaiar with Logical indexing [read more here](https://blogs.mathworks.com/loren/2013/02/20/logical-indexing-multiple-conditions/)  )
+the number of counts (integer) may be extracted as
 ```
 num_mask=sum(mask)
 ```
@@ -55,7 +56,7 @@ subset_mask=data(mask_idx(1):mask_idx(2));
 ***the data vector MUST be sorted***
 
 ## Contributions
--Benjamin Bernard: Binary search modified from fileexchange project [binary-search-for-closest-value-in-an-array](https://au.mathworks.com/matlabcentral/fileexchange/37915-binary-search-for-closest-value-in-an-array)
+-** Benjamin Bernard** Binary search modified from fileexchange project [binary-search-for-closest-value-in-an-array](https://au.mathworks.com/matlabcentral/fileexchange/37915-binary-search-for-closest-value-in-an-array)
 
 ## Future work
 - check what the function does to counts that equal the bin edge
