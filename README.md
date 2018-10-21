@@ -58,6 +58,7 @@ subset_mask=data(mask_idx(1):mask_idx(2));
 
 ## Contributions
 - **Benjamin Bernard** Binary search modified from fileexchange project [binary-search-for-closest-value-in-an-array](https://au.mathworks.com/matlabcentral/fileexchange/37915-binary-search-for-closest-value-in-an-array)
+- ***Denis Gilbert***    [M-file Header Template](https://au.mathworks.com/matlabcentral/fileexchange/4908-m-file-header-template)
 
 ## Future work
 - check what the function does to counts that equal the bin edge
