@@ -5,6 +5,7 @@ function idxs=fast_sorted_mask(data,min_val,max_val)
 % if the data is not already sorted then you can still get a net speedup
 % by sorting the data then use this code upwards of 30 times 
 % see test_fast_sorted_mask for a number of speed comparisons
+% this code calculates only when min_value<data<max_val and will not return min_value=data OR data=max_val
 
 % Syntax:  min_max_val_idx=fast_sorted_mask(data,min_val,max_val)
 % Example: 
@@ -12,7 +13,7 @@ function idxs=fast_sorted_mask(data,min_val,max_val)
 %       data=sort(rand(1e7,1));
 %       min_val=0.9;
 %       max_val=0.91;
-%       tic; mask=data<max_val & data>min_val;
+%       tic; mask= data>min_val & data<max_val;
 %       subdata1=sort(data(mask)); toc
 %       tic;mask_idx=fast_sorted_mask(data,min_val,max_val);
 %       subdata2=data(mask_idx(1):mask_idx(2)); toc
@@ -35,10 +36,11 @@ function idxs=fast_sorted_mask(data,min_val,max_val)
 
 
 elms=numel(data);
+max_idx=1;%initalize
 
 if data(1)>min_val
     min_idx=1;
-    if data(1)>max_val
+    if data(1)>=max_val
         max_idx=min_idx-1;%no output
     end
 else
@@ -50,10 +52,10 @@ end
    
 if data(end)<max_val
     max_idx=elms;
-    if data(end)<min_val
+    if data(end)<=min_val
         min_idx=max_idx+1;%no output
     end
-else
+elseif max_idx~=0 %prevent calculating if both limits are blow the first element
     max_idx=binary_search_first_elm(data,max_val,min_idx,elms);
     if data(max_idx)>=max_val
         max_idx=max_idx-1;
@@ -85,6 +87,10 @@ function idx_closest = binary_search_first_elm(vec, val,lower_idx,upper_idx)
 
 top = upper_idx(1);
 btm = lower_idx(1);
+
+if top <= btm + 1 %deal with the  case that would leave mid undefined
+    mid=top;
+end
 
 % Binary search for index
 while top > btm + 1
