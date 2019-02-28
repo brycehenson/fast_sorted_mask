@@ -60,6 +60,7 @@ subset_mask=data(mask_idx(1):mask_idx(2));
 [fast_search_based_histogram](https://github.com/brycehenson/fast_search_based_histogram) where I apply similar principles to dramaticaly speed up histograming (in certian cases). 
 
 ## Future work
+- consolidate test scripts
 - check what the function does to counts that equal the bin edge
 - figure out what the bump in the relative time is at n=10^7.05 
 - Compile to C
