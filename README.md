@@ -4,7 +4,7 @@ Matlab code for fast masking/selection of ordered vectors based on binary search
 
 Selecting a subset of a vector that is between some limits (herein *masking*,sometimes known as 'gating') is a widely used analytical tool (eg. particle physics) commonly employed in the analysis routines of the He* BEC group ([@spicydonkey](https://github.com/spicydonkey/hebec_essentials),[@GroundhogState](https://github.com/GroundhogState)). 
 
-The common approach to creating a histogram involves comparing each element to the upper and lower limit (herein *Brute compare*) has complexity O(n). The novel contribution of this code is a demonstration of a relatively simple approach that uses a binary search algorithm ( O(log(n)) ) on an ordered vector to achieve superior performance in two use cases. 
+The common approach to masking data involves comparing each element to the upper and lower limit (herein *Brute compare*) has complexity O(n). The novel contribution of this code is a demonstration of a relatively simple approach that uses a binary search algorithm ( O(log(n)) ) on an ordered vector to achieve superior performance in two use cases. 
 1. Data that is already sorted ( O(log(n)) cf. brute O(n) ).
 2. When there is a requirement to repeatedly (m) mask the same data such that the the inial cost of the sort is offset by the increased speed of the mask operation. (O(n·log(n)+m·log(n)) cf, O(n·m) )  
 Note that if m is small and you check that the data is ordered (eg issorted(data)) you have probably lost most of any potential speedup already.
@@ -67,6 +67,8 @@ subset_mask=data(mask_idx(1):mask_idx(2));
   - attempts have not shown any improvement.
 - Fast 1d histogram based on this approach
   - Adaptive between sort-search and brute based on the number of input counts
+  - matlabs inbuilt SVM fits the classification problem well but is too slow to query for small data sizes
+    - pehaps a hybrid appoach where hard coded limits define the clasification for small sizes
 - Fast n histogram to replace [histcn](https://au.mathworks.com/matlabcentral/fileexchange/23897-n-dimensional-histogram?focused=5198474&tab=function) & [ndhistc](https://au.mathworks.com/matlabcentral/fileexchange/3957-ndhistc)
 - add to fileexchange
   
