@@ -34,7 +34,7 @@ For taking small slices of large (>1e6 elments) sorted vectors a speedup of 1000
 |:--:| 
 | **Figure2**-**Retuning Values** **(a)** (Top left)The Relative execution time of the algorithm run on sorted data (of length n) compared to a simple brute compare approach.**(b)** (Top right) The Relative execution time of sorting data and then running the algorithm m times compared to the a simple brute compare approach (that does not requires sorted data) for the same m executions.**(c)**(Bottom left) the number of repeated uses (m) that are required in order to offest the inital sort time and produce the same execution time as the brute compare. **(d)**(Bottom right) as in **(b)** with varied m and fixed n.  |
 
-## Details
+## Implementation
 The brute compare implementation is very easy by using a logical mask vector:
 ```
 mask=data>lower_lim & data<upper_lim 
@@ -56,9 +56,8 @@ subset_mask=data(mask_idx(1):mask_idx(2));
 ```
 **WARNING: the data vector MUST be sorted. See figures above for when it is still advantagous to sort unordered data and then use this approach.**
 
-## Contributions
-- **Benjamin Bernard** Binary search modified from fileexchange project [binary-search-for-closest-value-in-an-array](https://au.mathworks.com/matlabcentral/fileexchange/37915-binary-search-for-closest-value-in-an-array)
-- ***Denis Gilbert***    [M-file Header Template](https://au.mathworks.com/matlabcentral/fileexchange/4908-m-file-header-template)
+## Also See
+[fast_search_based_histogram](https://github.com/brycehenson/fast_search_based_histogram) where I apply similar principles to dramaticaly speed up histograming (in certian cases). 
 
 ## Future work
 - check what the function does to counts that equal the bin edge
@@ -67,8 +66,10 @@ subset_mask=data(mask_idx(1):mask_idx(2));
   - attempts have not shown any improvement.
 - Fast 1d histogram based on this approach
   - Adaptive between sort-search and brute based on the number of input counts
-  - matlabs inbuilt SVM fits the classification problem well but is too slow to query for small data sizes
-    - pehaps a hybrid appoach where hard coded limits define the clasification for small sizes
 - Fast n histogram to replace [histcn](https://au.mathworks.com/matlabcentral/fileexchange/23897-n-dimensional-histogram?focused=5198474&tab=function) & [ndhistc](https://au.mathworks.com/matlabcentral/fileexchange/3957-ndhistc)
 - add to fileexchange
   
+## Contributions
+This project would not have been possible without the open source tools that it is based on.
+- **Benjamin Bernard** Binary search modified from fileexchange project [binary-search-for-closest-value-in-an-array](https://au.mathworks.com/matlabcentral/fileexchange/37915-binary-search-for-closest-value-in-an-array)
+- ***Denis Gilbert***    [M-file Header Template](https://au.mathworks.com/matlabcentral/fileexchange/4908-m-file-header-template)
