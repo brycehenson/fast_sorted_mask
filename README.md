@@ -1,9 +1,10 @@
 # fast_sorted_mask
 **Bryce M. Henson**  
 Matlab code for fast masking/selection of ordered vectors based on binary search.
+## Status
+**This Code is ready for use in other projects. Testing is implemented and passing. **
 
-**This Code is ready for use in other projects. Testing is implemented and passing **
-
+## Description
 Selecting a subset of a vector that is between some limits (herein *masking*,sometimes known as 'gating') is a widely used analytical tool (eg. particle physics) commonly employed in the analysis routines of the He* BEC group ([@spicydonkey](https://github.com/spicydonkey/hebec_essentials),[@GroundhogState](https://github.com/GroundhogState)). 
 
 The common approach to masking data involves comparing each element to the upper and lower limit (herein *Brute compare*) has complexity O(n). The novel contribution of this code is a demonstration of a relatively simple approach that uses a binary search algorithm ( O(log(n)) ) on an ordered vector to achieve superior performance in two use cases. 
@@ -63,15 +64,14 @@ subset_mask=data(mask_idx(1):mask_idx(2));
 
 ## Future work
 contributors welcome! Drop me an [email](mailto:bryce.m.henson+github.fast_sorted_maske@gmail.com?subject=I%20would%20Like%20to%20Contribute[github][fast_sorted_mask]) .
-- consolidate test scripts
-- check what the function does to counts that equal the bin edge
 - figure out what the bump in the relative time is at n=10^7.05 
 - Compile to C
   - attempts have not shown any improvement.
-- Fast 1d histogram based on this approach
-  - Adaptive between sort-search and brute based on the number of input counts
-- Fast n histogram to replace [histcn](https://au.mathworks.com/matlabcentral/fileexchange/23897-n-dimensional-histogram?focused=5198474&tab=function) & [ndhistc](https://au.mathworks.com/matlabcentral/fileexchange/3957-ndhistc)
+- Fast nd histogram to replace [histcn](https://au.mathworks.com/matlabcentral/fileexchange/23897-n-dimensional-histogram?focused=5198474&tab=function) & [ndhistc](https://au.mathworks.com/matlabcentral/fileexchange/3957-ndhistc)
 - add to fileexchange
+- [x] Fast 1d histogram based on this approach
+- [x] consolidate test scripts
+- [x] check what the function does to counts that equal the bin edge
   
 ## Contributions
 This project would not have been possible without the open source tools that it is based on.
