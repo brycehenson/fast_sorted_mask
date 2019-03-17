@@ -2,6 +2,8 @@
 **Bryce M. Henson**  
 Matlab code for fast masking/selection of ordered vectors based on binary search.
 
+**This Code is ready for use in other projects. Testing is implemented and passing **
+
 Selecting a subset of a vector that is between some limits (herein *masking*,sometimes known as 'gating') is a widely used analytical tool (eg. particle physics) commonly employed in the analysis routines of the He* BEC group ([@spicydonkey](https://github.com/spicydonkey/hebec_essentials),[@GroundhogState](https://github.com/GroundhogState)). 
 
 The common approach to masking data involves comparing each element to the upper and lower limit (herein *Brute compare*) has complexity O(n). The novel contribution of this code is a demonstration of a relatively simple approach that uses a binary search algorithm ( O(log(n)) ) on an ordered vector to achieve superior performance in two use cases. 
@@ -60,6 +62,7 @@ subset_mask=data(mask_idx(1):mask_idx(2));
 [fast_search_based_histogram](https://github.com/brycehenson/fast_search_based_histogram) where I apply similar principles to dramaticaly speed up histograming (in certian cases). 
 
 ## Future work
+contributors welcome! Drop me an [email](mailto:bryce.m.henson+github.fast_sorted_maske@gmail.com?subject=I%20would%20Like%20to%20Contribute[github][fast_sorted_mask]) .
 - consolidate test scripts
 - check what the function does to counts that equal the bin edge
 - figure out what the bump in the relative time is at n=10^7.05 
