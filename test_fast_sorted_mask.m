@@ -1,3 +1,5 @@
+addpath(genpath('bin'))
+
 %% compare the performance
 data=sort(rand(1e7,1));
 fprintf('comparing the performance for a 10^(%.1f) long vector\n',log10(numel(data)))
