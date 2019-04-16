@@ -5,9 +5,9 @@ Matlab code for fast masking/selection of ordered vectors based on binary search
 
 Selecting a subset of a vector that is between some limits (herein *masking*,sometimes known as 'gating') is a widely used analytical tool (eg. particle physics) commonly employed in the analysis routines of the He* BEC group ([@spicydonkey](https://github.com/spicydonkey/hebec_essentials),[@GroundhogState](https://github.com/GroundhogState)). 
 
-The common approach to masking data involves comparing each element to the upper and lower limit (herein *Brute compare*) has complexity O(n). The novel contribution of this code is a demonstration of a relatively simple approach that uses a binary search algorithm ( O(log(n)) ) on an ordered vector to achieve superior performance in two use cases. 
+The common approach to masking data involves comparing each element (n) to the upper and lower limit (herein *Brute compare*) has complexity O(n). The novel contribution of this code is a demonstration of a relatively simple approach that uses a binary search algorithm ( O(log(n)) ) on an ordered vector to achieve superior performance in two use cases. 
 1. Data that is already sorted ( O(log(n)) cf. brute O(n) ).
-2. When there is a requirement to repeatedly (m) mask the same data such that the the inial cost of the sort is offset by the increased speed of the mask operation. (O(n·log(n)+m·log(n)) cf, O(n·m) )  
+2. When there is a requirement to repeatedly (m times) mask the same data such that the the inial cost of the sort is offset by the increased speed of the mask operation. (O(n·log(n)+m·log(n)) cf. O(n·m) )  
 Note that if m is small and you check that the data is ordered (eg issorted(data)) you have probably lost most of any potential speedup already.
 
 There are two things that the user may want from this masking operation:
@@ -16,14 +16,12 @@ There are two things that the user may want from this masking operation:
 2. Return the values of the data that maskes it through this mask. (herein *retun mask values*)
    * This has a smaller speedup because copying a subset of a vector (even a contiguous block) is a substantialy slower than the search.
 
-
 The code here demonstrates the algorithm for both types (counting and subset) in native matlab and provides a number of tests in order to compare the performance.
 For taking small slices of large (>1e6 elments) sorted vectors, a speedup of 1000x is demonstrated.
 
 | ![A comparison of various masking approaches](fig1.png "Fig1") | 
 |:--:| 
- **Figure1**- Comparison of the brute mask to the fast_sorted_mask on an i7-7700 @ 4.00GHz . The brute mask for sorted and unsorted data gives comparable performance at large n, however at intermediate n \~10^2.1 the sorted date version is slightly faster which is somewhat puzzling. The fast_sorted_mask execution time (for a presorted vector) is superior at all values of n>10^2.1, however when the sort time is induced is slower than the brute mask. If however the execution time is measured an sort and then m=1e2 masking operations (and scaled) then superior performance is obtained.  |
-
+ **Figure1**- Comparison of the brute mask to the fast_sorted_mask on an i7-7700 @ 4.00GHz . The brute mask for sorted and unsorted data gives comparable performance at large n, however at intermediate n \~10^2.1 the sorted date version is slightly faster which is somewhat puzzling. The fast_sorted_mask execution time (for a presorted vector) is superior at all values of n>10^2.1, however when the sort time is induced is slower than the brute mask. If however the execution time includes the sort then for m=1e2 masking operations (and scaled) then superior performance is obtained.  |
 
 
 | ![A comparison of various masking approaches](fig2.png "Fig2") | 
