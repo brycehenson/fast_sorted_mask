@@ -3,11 +3,11 @@
 Matlab code for fast masking/selection of ordered vectors based on binary search.  
 **Status:** This Code **is ready for use in other projects**. Testing is implemented and passing.
 
-Selecting a subset of a vector that is between some limits (herein *masking*,sometimes known as 'gating') is a widely used analytical tool (eg. particle physics) commonly employed in the analysis routines of the He* BEC group ([@spicydonkey](https://github.com/spicydonkey/hebec_essentials),[@GroundhogState](https://github.com/GroundhogState)). 
+Selecting the elements of a vector that lie between some limits (herein *masking*, sometimes known as 'gating') is a widely used analytical tool (eg. particle physics) commonly employed in the analysis routines of the He* BEC group ([@spicydonkey](https://github.com/spicydonkey/hebec_essentials),[@GroundhogState](https://github.com/GroundhogState)). 
 
 The common approach to masking data involves comparing each element (n) to the upper and lower limit (herein *Brute compare*) has complexity O(n). The novel contribution of this code is a demonstration of a relatively simple approach that uses a binary search algorithm ( O(log(n)) ) on an ordered vector to achieve superior performance in two use cases. 
 1. Data that is already sorted ( O(log(n)) cf. brute O(n) ).
-2. When there is a requirement to repeatedly (m times) mask the same data such that the the inial cost of the sort is offset by the increased speed of the mask operation. (O(n·log(n)+m·log(n)) cf. O(n·m) )  
+2. When there is a requirement to repeatedly (m times) mask the same data such that the inial cost of the sort is offset by the increased speed of the mask operation. (O(n·log(n)+m·log(n)) cf. O(n·m) )  
 Note that if m is small and you check that the data is ordered (eg issorted(data)) you have probably lost most of any potential speedup already.
 
 There are two things that the user may want from this masking operation:
