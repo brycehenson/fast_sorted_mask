@@ -73,3 +73,4 @@ contributors welcome! Drop me an [email](mailto:bryce.m.henson+github.fast_sorte
 This project would not have been possible without the open source tools that it is based on.
 - **Benjamin Bernard** Binary search modified from fileexchange project [binary-search-for-closest-value-in-an-array](https://au.mathworks.com/matlabcentral/fileexchange/37915-binary-search-for-closest-value-in-an-array)
 - ***Denis Gilbert***    [M-file Header Template](https://au.mathworks.com/matlabcentral/fileexchange/4908-m-file-header-template)
+- ***Daniel Eaton***     ["Smart"/Silent Figure](https://au.mathworks.com/matlabcentral/fileexchange/8919-smart-silent-figure)
