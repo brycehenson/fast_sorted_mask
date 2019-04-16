@@ -64,7 +64,7 @@ contributors welcome! Drop me an [email](mailto:bryce.m.henson+github.fast_sorte
 - Compile to C
   - attempts have not shown any improvement.
 - Fast nd histogram to replace [histcn](https://au.mathworks.com/matlabcentral/fileexchange/23897-n-dimensional-histogram?focused=5198474&tab=function) & [ndhistc](https://au.mathworks.com/matlabcentral/fileexchange/3957-ndhistc)
-- add to fileexchange
+- [x] add to fileexchange
 - [x] Fast 1d histogram based on this approach
 - [x] consolidate test scripts
 - [x] check what the function does to counts that equal the bin edge
