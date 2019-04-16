@@ -18,7 +18,7 @@ There are two things that the user may want from this masking operation:
 
 
 The code here demonstrates the algorithm for both types (counting and subset) in native matlab and provides a number of tests in order to compare the performance.
-For taking small slices of large (>1e6 elments) sorted vectors a speedup of 1000x is demonstrated.
+For taking small slices of large (>1e6 elments) sorted vectors, a speedup of 1000x is demonstrated.
 
 | ![A comparison of various masking approaches](fig1.png "Fig1") | 
 |:--:| 
