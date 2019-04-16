@@ -1,7 +1,7 @@
-# fast_sorted_mask
+# <img src="logo.png" alt="logo" width="400"/> 
 **Bryce M. Henson**  
 Matlab code for fast masking/selection of ordered vectors based on binary search.  
-**Status:** This Code **is ready for use in other projects**. Testing is implemented and passing.
+**Status:** This Code **is ready for use in other projects**. Testing is implemented and passing.  
 
 Selecting the elements of a vector that lie between some limits (herein *masking*, sometimes known as 'gating') is a widely used analytical tool (eg. particle physics) commonly employed in the analysis routines of the He* BEC group ([@spicydonkey](https://github.com/spicydonkey/hebec_essentials),[@GroundhogState](https://github.com/GroundhogState)). 
 
