@@ -11,13 +11,13 @@ The common approach to masking data involves comparing each element (n) to the u
 Note that if m is small and you check that the data is ordered (eg issorted(data)) you have probably lost most of any potential speedup already.
 
 There are two things that the user may want from this masking operation:
-1. Returning the number of data points(or counts) in this mask (herein *retun mask count*).
-   * This is where the search based algorithm really shines compared to the brute mask (as it just subtracts the uper and lower index while the brute compare must count up the logical vector, see detials).
-2. Return the values of the data that maskes it through this mask. (herein *retun mask values*)
-   * This has a smaller speedup because copying a subset of a vector (even a contiguous block) is a substantialy slower than the search.
+1. Returning the number of data points(or counts) in this mask (herein *return mask count*).
+   * This is where the search based algorithm really shines compared to the brute mask (as it just subtracts the upper and lower index while the brute compare must count up the logical vector, see details).
+2. Return the values of the data that makes it through this mask. (herein *retun mask values*)
+   * This has a smaller speedup because copying a subset of a vector (even a contiguous block) is a substantially slower than the search.
 
 The code here demonstrates the algorithm for both types (counting and subset) in native matlab and provides a number of tests in order to compare the performance.
-For taking small slices of large (>1e6 elments) sorted vectors, a speedup of 1000x is demonstrated.
+For taking small slices of large (>1e6 elements) sorted vectors, a speedup of 1000x is demonstrated.
 
 | ![A comparison of various masking approaches](fig1.png "Fig1") | 
 |:--:| 
