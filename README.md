@@ -1,4 +1,4 @@
-# <img src="logo.png" alt="logo" width="400"/> 
+# <img src="logo.png" alt="/figs/logo" width="400"/> 
 **Bryce M. Henson**  
 Matlab code for fast masking/selection of ordered vectors based on binary search.  
 **Status:** This Code **is ready for use in other projects**. Testing is implemented and passing.  
@@ -19,17 +19,17 @@ There are two things that the user may want from this masking operation:
 The code here demonstrates the algorithm for both types (counting and subset) in native matlab and provides a number of tests in order to compare the performance.
 For taking small slices of large (>1e6 elements) sorted vectors, a speedup of 1000x is demonstrated.
 
-| ![A comparison of various masking approaches](fig1.png "Fig1") | 
+| ![A comparison of various masking approaches](/figs/fig1.png "Fig1") | 
 |:--:| 
  **Figure1**- Comparison of the brute mask to the fast_sorted_mask on an i7-7700 @ 4.00GHz . The brute mask for sorted and unsorted data gives comparable performance at large n, however at intermediate n \~10^2.1 the sorted date version is slightly faster which is somewhat puzzling. The fast_sorted_mask execution time (for a presorted vector) is superior at all values of n>10^2.1, however when the sort time is induced is slower than the brute mask. If however the execution time includes the sort then for m=1e2 masking operations (and scaled) then superior performance is obtained.  |
 
 
-| ![A comparison of various masking approaches](fig2.png "Fig2") | 
+| ![A comparison of various masking approaches](/figs/fig2.png "Fig2") | 
 |:--:| 
 | **Figure2**-**Retuning Counts** **(a)** (Top left)The Relative execution time of the algorithm run on sorted data (of length n) compared to a simple brute compare approach.**(b)** (Top right) The Relative execution time of sorting data and then running the algorithm m times compared to the a simple brute compare approach (that does not requires sorted data) for the same m executions.**(c)**(Bottom left) the number of repeated uses (m) that are required in order to offest the inital sort time and produce the same execution time as the brute compare. **(d)**(Bottom right) as in **(b)** with varied m and fixed n.  |
 
 
-| ![A comparison of various masking approaches](fig3.png "Fig3") | 
+| ![A comparison of various masking approaches](/figs/fig3.png "Fig3") | 
 |:--:| 
 | **Figure2**-**Retuning Values** **(a)** (Top left)The Relative execution time of the algorithm run on sorted data (of length n) compared to a simple brute compare approach.**(b)** (Top right) The Relative execution time of sorting data and then running the algorithm m times compared to the a simple brute compare approach (that does not requires sorted data) for the same m executions.**(c)**(Bottom left) the number of repeated uses (m) that are required in order to offest the inital sort time and produce the same execution time as the brute compare. **(d)**(Bottom right) as in **(b)** with varied m and fixed n.  |
 
