@@ -1,5 +1,5 @@
 # <img src="/figs/logo.png" alt="logo" width="400"/> 
-**Bryce M. Henson**  
+**[Bryce M. Henson](https://github.com/brycehenson)**  
 Matlab code for fast masking/selection of ordered vectors based on binary search.  
 **Status:** This Code **is ready for use in other projects**. Testing is implemented and passing.  
 
